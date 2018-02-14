@@ -25,13 +25,9 @@ This addon uses [ember-in-element-polyfill](https://github.com/kaliber5/ember-in
 Installation
 ------------------------------------------------------------------------------
 
-```
-ember install ember-render-to-string
-# or
-yarn add --dev ember-render-to-string
-# or
-npm install --save-dev ember-render-to-string
-```
+* With ember: `ember install ember-render-to-string` 
+* With yarn: `yarn add --dev ember-render-to-string` 
+* With npm: `npm install --save-dev ember-render-to-string`
 
 Usage
 ------------------------------------------------------------------------------
@@ -105,7 +101,7 @@ Contributing
 
 ### Installation
 
-* `git clone <repository-url>`
+* `git clone git@github.com:kolybasov/ember-render-to-string.git`
 * `cd ember-render-to-string`
 * `yarn install`
 
