@@ -1,6 +1,8 @@
 ember-render-to-string
 ==============================================================================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kolybasov/ember-render-to-string.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/kolybasov/ember-render-to-string.svg?branch=master)](https://travis-ci.org/kolybasov/ember-render-to-string)
 
 A component to render any Ember template to string.
