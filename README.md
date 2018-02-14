@@ -1,6 +1,8 @@
 ember-render-to-string
 ==============================================================================
 
+[![Build Status](https://travis-ci.org/kolybasov/ember-render-to-string.svg?branch=master)](https://travis-ci.org/kolybasov/ember-render-to-string)
+
 A component to render any Ember template to string.
 
 Motivation
