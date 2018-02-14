@@ -1,20 +1,100 @@
 ember-render-to-string
 ==============================================================================
 
-[Short description of the addon.]
+A component to render any Ember template to string.
+
+Motivation
+------------------------------------------------------------------------------
+
+There is a need sometimes to render Ember Template to string without poluting
+the rest of the page with unwanted content. It is especially useful for
+making wrappers for third-party libraries where you can pass innerHTML of element.
+For example [ember-medium-editor](https://github.com/kolybasov/ember-medium-editor)
+uses it to pass innerHTML for buttons.
+
+Implementation is borrowed from awesome [ember-composability-tools](https://github.com/miguelcobain/ember-composability-tools#3-render-blocks-as-dom-but-not-to-the-document) but
+`ember-wormhole` addon was replaced by native `in-element` helper which still
+private API but there is [RFC](https://github.com/emberjs/rfcs/pull/287) to
+promote it to public.
+
+This addon uses [ember-in-element-polyfill](https://github.com/kaliber5/ember-in-element-polyfill).
 
 Installation
 ------------------------------------------------------------------------------
 
 ```
 ember install ember-render-to-string
+# or
+yarn add --dev ember-render-to-string
+# or
+npm install --save-dev ember-render-to-string
 ```
-
 
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+```javascript
+import Component from '@ember/component';
+
+export default Component.extend({
+  items: ['Ember', 'Vue', 'React'],
+
+  actions: {
+    returnInnerHTML(html) {
+      console.log(html); // '<h2>Can you see me?</h2>'
+    },
+
+    returnJustText(text) {
+      console.log(text); // 'Can you see me?'
+    },
+
+    returnDOMNode(node) {
+      console.log(node.tagName); // 'DIV'
+    },
+
+    returnCustomDOMNode(node) {
+      console.log(node.tagName); // 'BUTTON'
+    },
+
+    anyEmberHelper(html) {
+      console.log(html); // '<ul><li>Ember</li><li>Vue</li><li>React</li></ul>'
+    }
+  }
+});
+```
+
+```handlebars
+{{#render-to-string afterRender=(action "returnInnerHTML")}}
+  <h2>Can you see me?</h2>
+{{/render-to-string}}
+
+{{#render-to-string 
+  content="text"
+  afterRender=(action "returnJustText")}}
+  <h2>Can you see me?</h2>
+{{/render-to-string}}
+
+{{#render-to-string
+  content="dom"
+  afterRender=(action "returnDOMNode")}}
+  <h2>Can you see me?</h2>
+{{/render-to-string}}
+
+{{#render-to-string
+  content="dom"
+  destElTag="button"
+  afterRender=(action "returnCustomDOMNode")}}
+  <h2>Can you see me?</h2>
+{{/render-to-string}}
+
+{{#render-to-string afterRender=(action "anyEmberHelper")}}
+  <ul>
+    {{#each items as |lib|}}
+      <li>{{lib}}</li>
+    {{/each}}
+  </ul>
+{{/render-to-string}}
+```
 
 
 Contributing
@@ -36,13 +116,6 @@ Contributing
 * `ember test` – Runs the test suite on the current Ember version
 * `ember test --server` – Runs the test suite in "watch mode"
 * `yarn test` – Runs `ember try:each` to test your addon against multiple Ember versions
-
-### Running the dummy application
-
-* `ember serve`
-* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
 
 License
 ------------------------------------------------------------------------------
