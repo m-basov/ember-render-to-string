@@ -95,6 +95,12 @@ export default Component.extend({
 {{/render-to-string}}
 ```
 
+Options
+------------------------------------------------------------------------------
+
+* [content](./addon/components/render-to-string.js#L21)
+* [destElTag](./addon/components/render-to-string.js#L31)
+* [afterRender](./addon/components/render-to-string.js#L40)
 
 Contributing
 ------------------------------------------------------------------------------

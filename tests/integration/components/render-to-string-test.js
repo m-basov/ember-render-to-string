@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import Service from '@ember/service';
 
 module('Integration | Component | render-to-string', function(hooks) {
   setupRenderingTest(hooks);
@@ -96,5 +97,19 @@ module('Integration | Component | render-to-string', function(hooks) {
     `);
 
     this.set('text', 'Yes, I can!');
+  });
+
+  test('it should not render and fire hooks inside of fastboot env', async function(assert) {
+    assert.expect(0);
+
+    this.owner.register('service:fastboot', Service.extend({ isFastBoot: true }));
+
+    this.set('afterRender', () => assert.ok(false));
+
+    await render(hbs`
+      {{#render-to-string afterRender=(action afterRender)}}
+        <h2>I am not rendered!</h2>
+      {{/render-to-string}}
+    `);
   });
 });

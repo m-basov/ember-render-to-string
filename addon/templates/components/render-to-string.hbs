@@ -1,3 +1,5 @@
-{{#in-element destEl~}}
-  {{yield}}
-{{~/in-element}}
+{{#if isNotFastboot}}
+  {{#in-element destEl~}}
+    {{yield}}
+  {{~/in-element}}
+{{/if}}
