@@ -4,7 +4,7 @@ ember-render-to-string
 [![Build Status](https://travis-ci.org/kolybasov/ember-render-to-string.svg?branch=master)](https://travis-ci.org/kolybasov/ember-render-to-string)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-render-to-string.svg)](https://emberobserver.com/addons/ember-render-to-string)
 
-A component to render any Ember template to string.
+A component to render any Ember template to string. Works with Ember 2.10+(Glimmer 2) and FastBoot!
 
 Motivation
 ------------------------------------------------------------------------------
@@ -19,8 +19,6 @@ Implementation is borrowed from awesome [ember-composability-tools](https://gith
 `ember-wormhole` addon was replaced by native `in-element` helper which still
 private API but there is [RFC](https://github.com/emberjs/rfcs/pull/287) to
 promote it to public.
-
-This addon uses [ember-in-element-polyfill](https://github.com/kaliber5/ember-in-element-polyfill).
 
 Installation
 ------------------------------------------------------------------------------
