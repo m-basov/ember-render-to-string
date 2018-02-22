@@ -1,6 +1,8 @@
 ember-render-to-string
 ==============================================================================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kolybasov/ember-render-to-string.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/kolybasov/ember-render-to-string.svg?branch=master)](https://travis-ci.org/kolybasov/ember-render-to-string)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-render-to-string.svg)](https://emberobserver.com/addons/ember-render-to-string)
 
